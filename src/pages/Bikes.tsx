@@ -40,8 +40,8 @@ const Bikes = () => {
             <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
               Our <span className="text-primary">Bike Fleet</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Choose from our collection of well-maintained bikes for your next adventure.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Explore a selection of our popular bikes. Our full fleet includes many other models perfect for any adventure. Get in touch for more options!
             </p>
           </div>
 
@@ -90,7 +90,7 @@ const Bikes = () => {
             {filteredBikes.map((bike) => (
               <Card key={bike.id} className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group">
                 <div className="relative">
-                  <img src={bike.image} alt={bike.name} className="w-full h-48 object-cover" />
+                  <img src={bike.image} alt={bike.name} className="w-full h-[300px] object-cover" />
                   <Badge className="absolute top-3 right-3">⭐ {bike.rating}</Badge>
                   {!bike.available && <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>}
                 </div>

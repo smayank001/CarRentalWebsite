@@ -11,6 +11,7 @@ import Bikes from "./pages/Bikes";
 import BikeDetails from "./pages/BikeDetails";
 import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -26,6 +27,7 @@ const App = () => (
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/cars" element={<Cars />} />
             <Route path="/car/:id" element={<CarDetails />} />
             <Route path="/bikes" element={<Bikes />} />

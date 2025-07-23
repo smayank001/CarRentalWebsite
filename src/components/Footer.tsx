@@ -4,6 +4,7 @@ import { Car, Facebook, Twitter, Instagram, MapPin, Phone, Mail } from 'lucide-r
 const Footer = () => {
   const quickLinks = [
     { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
     { name: 'Cars', path: '/cars' },
     { name: 'Bikes', path: '/bikes' },
     { name: 'Booking', path: '/booking' },
@@ -11,9 +12,21 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', name: 'Facebook' },
-    { icon: Twitter, href: '#', name: 'Twitter' },
-    { icon: Instagram, href: '#', name: 'Instagram' },
+    {
+      icon: Facebook,
+      href: 'https://www.facebook.com/share/1GxmFFzcwX/',
+      name: 'Facebook',
+    },
+    {
+      icon: Twitter,
+      href: 'https://twitter.com/Sonu76895534?t=J2HZ6q8i8Ohq3Vmjid6LNQIJhpYfg5oiO5REql5Cm70&s=09',
+      name: 'Twitter',
+    },
+    {
+      icon: Instagram,
+      href: 'https://www.instagram.com/sonurajput931official?igsh=MXgxdjNrbnVoMTF3Ng==',
+      name: 'Instagram',
+    },
   ];
 
   return (
@@ -38,6 +51,8 @@ const Footer = () => {
                 <a
                   key={social.name}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-2 rounded-full bg-gray-700 hover:bg-primary transition-colors duration-300 text-white"
                   aria-label={social.name}
                 >

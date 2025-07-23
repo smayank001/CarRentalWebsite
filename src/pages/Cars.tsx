@@ -40,8 +40,8 @@ const Cars = () => {
             <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
               Our <span className="text-primary"> Car Fleet</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Choose from our collection of well-maintained vehicles for any occasion.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              This is just a glimpse of our extensive collection. We have many more models available to suit your needs. Contact us for specific requests!
             </p>
           </div>
 
@@ -90,7 +90,7 @@ const Cars = () => {
             {filteredCars.map((car) => (
               <Card key={car.id} className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group">
                 <div className="relative">
-                  <img src={car.image} alt={car.name} className="w-full h-48 object-cover" />
+                  <img src={car.image} alt={car.name} className="w-full h-[250px] object-cover" />
                   <Badge className="absolute top-3 right-3">⭐ {car.rating}</Badge>
                   {!car.available && <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>}
                 </div>
