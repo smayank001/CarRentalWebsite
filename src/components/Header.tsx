@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Car } from 'lucide-react';
 import BookingModal from './BookingModal';
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -69,11 +70,12 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden md:block">
+            {/* CTA Button & Theme Toggle */}
+            <div className="hidden md:flex items-center space-x-2">
               <Button onClick={() => setIsBookingModalOpen(true)}>
                 Book Now
               </Button>
+              <ThemeToggle />
             </div>
 
             {/* Mobile Menu Button */}
@@ -107,9 +109,14 @@ const Header = () => {
                     {item.name}
                   </Link>
                 ))}
-                <Button className="w-full mt-4" onClick={() => { setIsBookingModalOpen(true); setIsMobileMenuOpen(false); }}>
-                  Book Now
-                </Button>
+                <div className="flex items-center justify-between pt-4 border-t border-border">
+                  <Button className="flex-grow" onClick={() => { setIsBookingModalOpen(true); setIsMobileMenuOpen(false); }}>
+                    Book Now
+                  </Button>
+                  <div className="ml-2">
+                    <ThemeToggle />
+                  </div>
+                </div>
               </nav>
             </div>
           )}

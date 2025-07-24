@@ -20,11 +20,11 @@ const Contact = () => {
             <Card>
               <CardHeader><CardTitle>Contact Information</CardTitle></CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-start space-x-4"><MapPin className="h-6 w-6 text-primary mt-1" /><div><h3 className="font-semibold">Address</h3><p className="text-muted-foreground"> House No.293, Rathi Mill, Ambedkar Nagar, Vijay Nagar, Ghaziabad, Uttar Pradesh(201009)</p></div></div>
+                <div className="flex items-start space-x-4"><MapPin className="h-6 w-6 text-primary mt-1" /><div><h3 className="font-semibold">Address</h3><p className="text-muted-foreground"> Crossings Republik, Ghaziabad, Uttar Pradesh</p></div></div>
                 <div className="flex items-start space-x-4"><Phone className="h-6 w-6 text-primary mt-1" /><div><h3 className="font-semibold">Phone</h3><p className="text-muted-foreground">+91 9953799936<br/>+91 9910198557</p></div></div>
-                <div className="flex items-start space-x-4"><Mail className="h-6 w-6 text-primary mt-1" /><div><h3 className="font-semibold">Email</h3><p className="text-muted-foreground">sonurajputsr5550@gmail.com<br/>arvindkumar.ak89@gmail.com</p></div></div>
+                <div className="flex items-start space-x-4"><Mail className="h-6 w-6 text-primary mt-1" /><div><h3 className="font-semibold">Email</h3><p className="text-muted-foreground">arvindkumar.ak89@gmail.com<br/>sonurajputsr5550@gmail.com</p></div></div>
                 <div className="flex items-start space-x-4"><Clock className="h-6 w-6 text-primary mt-1" /><div><h3 className="font-semibold">Business Hours</h3><p className="text-muted-foreground">24/7 Service</p></div></div>
-                <div className="flex items-start space-x-4"><User className="h-6 w-6 text-primary mt-1" /><div><h3 className="font-semibold">Contact Persons</h3><p className="text-muted-foreground">Arvind Kumar / Sonu Rajput</p></div></div>
+                <div className="flex items-start space-x-4"><User className="h-6 w-6 text-primary mt-1" /><div><h3 className="font-semibold">Contact Persons</h3><p className="text-muted-foreground">Aniket Motors / Sonu Rajput</p></div></div>
               </CardContent>
             </Card>
           </div>
@@ -35,16 +35,17 @@ const Contact = () => {
               <CardHeader><CardTitle>Find Us On The Map</CardTitle></CardHeader>
               <CardContent>
               <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden border">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d688.840659006447!2d77.43269124939079!3d28.63981258085508!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cee291c901b89%3A0x8f1086386f228912!2s293%2C%20Ambedkar%20Nagar%2C%20Vijay%20Nagar%2C%20Ghaziabad%2C%20Uttar%20Pradesh%20201009!5e1!3m2!1sen!2sin!4v1753260880544!5m2!1sen!2sin"
-    width="100%"
-    height="450"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11527.59454489612!2d77.42587035584839!3d28.628142460670748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cee307ecc7e91%3A0x16613eec68653aa4!2sCrossings%20Republik%2C%20Ghaziabad%2C%20Uttar%20Pradesh!5e1!3m2!1sen!2sin!4v1753350423187!5m2!1sen!2sin"
+                  width="100%"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+
+              </div>
 
               </CardContent>
             </Card>

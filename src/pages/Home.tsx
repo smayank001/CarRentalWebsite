@@ -56,7 +56,7 @@ const Home = () => {
             <div className="relative animate-fade-in-down">
               <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-primary to-blue-400 rounded-3xl transform -rotate-3 shadow-lg"></div>
               <div className="relative bg-background p-2 rounded-2xl shadow-lg">
-                <img src="/Jeep.jpg" alt="Mahindra Thar" className="w-full h-80 object-cover rounded-xl" />
+                <img src="/banner.jpg" alt="" className="w-full h-100 object-cover rounded-xl" />
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@ const Home = () => {
               return (
                 <Card key={`${isCar ? 'car' : 'bike'}-${vehicle.id}`} className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group">
                   <div className="relative">
-                    <img src={vehicle.image} alt={vehicle.name} className="w-full h-48 object-cover" />
+                    <img src={vehicle.image} alt={vehicle.name} className="w-full h-[250px]  object-cover" />
                     <Badge className="absolute top-3 right-3">⭐ {vehicle.rating}</Badge>
                   </div>
                   <CardContent className="p-6">

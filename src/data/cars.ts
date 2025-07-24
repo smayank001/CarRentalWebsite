@@ -11,14 +11,14 @@ export interface Car {
   rating: number;
   reviews: number;
   transmission: 'Manual' | 'Automatic';
-  fuel: 'Diesel' | 'Petrol' | 'CNG'; // ✅ Added CNG here
+  fuel: 'Diesel' | 'Petrol' | 'CNG';
   seats: number;
   available: boolean;
   description: string;
   features: string[];
   specifications: {
     transmission: 'Manual' | 'Automatic';
-    fuel: 'Diesel' | 'Petrol' | 'CNG'; // ✅ Added CNG here
+    fuel: 'Diesel' | 'Petrol' | 'CNG';
     seats: number;
     mileage: string;
     engine: string;
@@ -33,7 +33,7 @@ export const cars: Car[] = [
     name: 'Mahindra Thar',
     brand: 'Mahindra',
     type: 'SUV',
-    price: 5500,
+    price: 5000,
     image: '/Jeep.jpg',
     images: ['/Jeep.jpg'],
     rating: 4.8,
@@ -60,7 +60,7 @@ export const cars: Car[] = [
     name: 'Mahindra Scorpio-N',
     brand: 'Mahindra',
     type: 'SUV',
-    price: 5500,
+    price: 5000,
     image: '/scorpion.jpg',
     images: ['/scorpion.jpg'],
     rating: 4.7,
@@ -86,7 +86,7 @@ export const cars: Car[] = [
     name: 'Maruti Swift',
     brand: 'Maruti',
     type: 'Hatchback',
-    price: 2500,
+    price: 2400,
     image: '/swiftsilver.jpg',
     images: ['/swiftsilver.jpg'],
     rating: 4.6,
@@ -118,14 +118,14 @@ export const cars: Car[] = [
     rating: 4.8,
     reviews: 130,
     transmission: 'Manual',
-    fuel: 'CNG', // ✅ updated
+    fuel: 'CNG',
     seats: 5,
     available: true,
     description: 'The Honda City is a benchmark for sedans...',
     features: ['Sunroof', 'Leather Seats', 'Manual Transmission', 'Petrol Engine', 'Rear AC Vents', 'Touchscreen Infotainment'],
     specifications: {
       transmission: 'Manual',
-      fuel: 'CNG', // ✅ updated
+      fuel: 'CNG',
       seats: 5,
       mileage: '18.4 km/l',
       engine: '1.5L i-VTEC',
@@ -138,7 +138,7 @@ export const cars: Car[] = [
     name: 'Maruti Baleno',
     brand: 'Maruti',
     type: 'Hatchback',
-    price: 2600,
+    price: 2500,
     image: '/marutibaleno.jpg',
     images: ['/marutibaleno.jpg'],
     rating: 4.7,
@@ -164,20 +164,20 @@ export const cars: Car[] = [
     name: 'Maruti Ertiga',
     brand: 'Maruti',
     type: 'MUV',
-    price: 3800,
+    price: 3500,
     image: '/ertiga.jpg',
     images: ['/ertiga.jpg'],
     rating: 4.6,
     reviews: 165,
     transmission: 'Manual',
-    fuel: 'CNG', // ✅ updated
+    fuel: 'CNG',
     seats: 7,
     available: true,
     description: 'The Maruti Ertiga is a stylish and versatile MUV...',
     features: ['Roof Mounted AC', 'Paddle Shifters', 'Manual Transmission', 'Petrol Engine', 'Smart Hybrid Technology'],
     specifications: {
       transmission: 'Manual',
-      fuel: 'CNG', // ✅ updated
+      fuel: 'CNG',
       seats: 7,
       mileage: '20.3 km/l',
       engine: '1.5L K-series',
@@ -190,7 +190,7 @@ export const cars: Car[] = [
     name: 'Maruti Swift Dzire',
     brand: 'Maruti',
     type: 'Sedan',
-    price: 2700,
+    price: 2500,
     image: '/whiteswift.jpg',
     images: ['/whiteswift.jpg'],
     rating: 4.5,
@@ -208,6 +208,58 @@ export const cars: Car[] = [
       mileage: '22.61 km/l',
       engine: '1.2L DualJet',
       year: 2023,
+    },
+    location: 'Ghaziabad, UP',
+  },
+  {
+    id: 8,
+    name: 'Maruti Grand Vitara',
+    brand: 'Maruti',
+    type: 'SUV',
+    price: 4000,
+    image: '/grandvitara.jpg', // Placeholder image
+    images: ['/grandvitara.jpg'],
+    rating: 4.7,
+    reviews: 95,
+    transmission: 'Automatic',
+    fuel: 'Petrol',
+    seats: 5,
+    available: true,
+    description: 'The Grand Vitara offers a commanding presence and a premium experience with its hybrid technology.',
+    features: ['Panoramic Sunroof', 'Ventilated Seats', 'Wireless Charger', 'SmartPlay Pro+ Infotainment'],
+    specifications: {
+      transmission: 'Automatic',
+      fuel: 'Petrol',
+      seats: 5,
+      mileage: '21.11 km/l',
+      engine: '1.5L Intelligent Electric Hybrid',
+      year: 2023,
+    },
+    location: 'Ghaziabad, UP',
+  },
+  {
+    id: 9,
+    name: 'Maruti Fronx',
+    brand: 'Maruti',
+    type: 'SUV',
+    price: 2800,
+    image: '/fronx.jpg', // Placeholder image
+    images: ['/fronx.jpg'],
+    rating: 4.6,
+    reviews: 88,
+    transmission: 'Manual',
+    fuel: 'CNG',
+    seats: 5,
+    available: false, // Coming Soon
+    description: 'A stylish crossover with a sporty design and efficient performance. Available in both Petrol and CNG.',
+    features: ['Dual-tone interior', 'Floating Infotainment System', 'LED DRLs', 'Alloy Wheels'],
+    specifications: {
+      transmission: 'Manual',
+      fuel: 'CNG',
+      seats: 5,
+      mileage: '28.51 km/kg (CNG)',
+      engine: '1.2L DualJet',
+      year: 2024,
     },
     location: 'Ghaziabad, UP',
   },

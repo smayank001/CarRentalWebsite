@@ -97,7 +97,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-start space-x-3 text-gray-400">
                 <MapPin className="h-5 w-5 text-primary mt-1" />
-                <span>Vijay Nagar, Ghaziabad, Uttar Pradesh</span>
+                <span>Crossings Republik, Ghaziabad, Uttar Pradesh</span>
               </div>
               <div className="flex items-start space-x-3 text-gray-400">
                 <Phone className="h-5 w-5 text-primary mt-1" />
@@ -106,8 +106,8 @@ const Footer = () => {
               <div className="flex items-start space-x-3 text-gray-400">
                 <Mail className="h-5 w-5 text-primary mt-1" />
                 <div className="flex flex-col">
-                  <span>sonurajputsr5550@gmail.com</span>
                   <span>arvindkumar.ak89@gmail.com</span>
+                  <span>sonurajputsr5550@gmail.com</span>
                 </div>
               </div>
             </div>

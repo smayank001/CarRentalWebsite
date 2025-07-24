@@ -38,10 +38,10 @@ const Cars = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
-              Our <span className="text-primary"> Car Fleet</span>
+              Our Premier <span className="text-primary"> Car Fleet</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              This is just a glimpse of our extensive collection. We have many more models available to suit your needs. Contact us for specific requests!
+              Explore our featured collection below. Our full inventory includes a wide variety of models to suit any need. Contact us for specific requests!
             </p>
           </div>
 
@@ -82,7 +82,7 @@ const Cars = () => {
 
           <div className="mb-8">
             <p className="text-muted-foreground">
-              Showing {filteredCars.length} of {cars.length} vehicles
+              Showing {filteredCars.length} of our featured vehicles
             </p>
           </div>
 
@@ -92,10 +92,14 @@ const Cars = () => {
                 <div className="relative">
                   <img src={car.image} alt={car.name} className="w-full h-[250px] object-cover" />
                   <Badge className="absolute top-3 right-3">⭐ {car.rating}</Badge>
-                  {!car.available && <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>}
+                  {car.name.includes('Fronx') ? (
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="default" className="text-lg bg-blue-600">Coming Soon</Badge></div>
+                  ) : !car.available && (
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>
+                  )}
                 </div>
                 <CardContent className="p-6 pb-4">
-                  <h3 className="text-xl font-semibold mb-2">{car.name}</h3>
+                  <h3 className="text-xl font-semibold mb-2">{car.name.replace(' (Coming Soon)', '')}</h3>
                   <div className="flex items-center text-muted-foreground space-x-4 mb-4 text-sm">
                     <div className="flex items-center"><Users className="h-4 w-4 mr-1 text-primary" /><span>{car.seats} Seats</span></div>
                     <div className="flex items-center"><Fuel className="h-4 w-4 mr-1 text-primary" /><span>{car.fuel}</span></div>

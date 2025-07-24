@@ -26,7 +26,15 @@ const bookingSchema = z.object({
   phoneNumber: z.string().min(10, { message: "A valid phone number is required" }),
   selectedVehicle: z.string().min(1, { message: "Please select a vehicle" }),
   duration: z.string().min(1, { message: "Please select a duration" }),
-  pickupDate: z.string().min(1, { message: "Pickup date is required" }),
+  pickupDate: z.string()
+    .min(1, { message: "Pickup date is required" })
+    .refine(date => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Set to the beginning of today
+      return new Date(date) >= today;
+    }, {
+      message: "Pickup date cannot be in the past.",
+    }),
   pickupTime: z.string().min(1, { message: "Pickup time is required" }),
 });
 
@@ -38,6 +46,8 @@ const WHATSAPP_NUMBER_2 = "919910198557";
 const Booking = () => {
   const [isDialogVisible, setDialogVisible] = useState(false);
   const [formData, setFormData] = useState<BookingFormValues | null>(null);
+
+  const today = new Date().toISOString().split('T')[0];
 
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(bookingSchema),
@@ -126,7 +136,7 @@ const Booking = () => {
                       <FormField control={form.control} name="duration" render={({ field }) => (<FormItem><FormLabel>Duration *</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue placeholder="Select duration" /></SelectTrigger></FormControl><SelectContent><SelectItem value="1 Day">1 Day</SelectItem><SelectItem value="2-3 Days">2-3 Days</SelectItem><SelectItem value="4-6 Days">4-6 Days</SelectItem><SelectItem value="1 Week+">1 Week+</SelectItem></SelectContent></Select><FormMessage /></FormItem>)} />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField control={form.control} name="pickupDate" render={({ field }) => (<FormItem><FormLabel>Pickup Date *</FormLabel><FormControl><Input type="date" {...field} /></FormControl><FormMessage /></FormItem>)} />
+                      <FormField control={form.control} name="pickupDate" render={({ field }) => (<FormItem><FormLabel>Pickup Date *</FormLabel><FormControl><Input type="date" {...field} min={today} /></FormControl><FormMessage /></FormItem>)} />
                       <FormField control={form.control} name="pickupTime" render={({ field }) => (<FormItem><FormLabel>Pickup Time *</FormLabel><FormControl><Input type="time" {...field} /></FormControl><FormMessage /></FormItem>)} />
                     </div>
                     <Button type="submit" className="w-full" size="lg">Confirm Booking</Button>
@@ -157,7 +167,7 @@ const Booking = () => {
               onClick={() => handleContact(WHATSAPP_NUMBER_2)}
               className="w-full h-16 text-lg bg-green-500 text-white hover:bg-green-600 hover:text-white"
             >
-              <MessageSquare className="mr-2 h-6 w-6" /> Contact Arvind
+              <MessageSquare className="mr-2 h-6 w-6" /> Contact Aniket Motors
             </Button>
           </div>
           <AlertDialogFooter>

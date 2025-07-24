@@ -18,7 +18,7 @@ interface BookingModalProps {
 const WHATSAPP_NUMBER_1 = "919953799936";
 const WHATSAPP_NUMBER_2 = "919910198557";
 const EMAIL_ADDRESS_1 = "sonurajputsr5550@gmail.com";
-const EMAIL_ADDRESS_2 = "arvindkumar.ak89@gmail.com";
+const EMAIL_ADDRESS_2 = "aniketmotors.ghz@gmail.com";
 
 const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
   const whatsappMessage = encodeURIComponent("I'm interested in booking a vehicle.");
@@ -49,7 +49,7 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
               </Button>
               <Button asChild variant="outline" className="h-16 text-lg bg-green-500 text-white hover:bg-green-600 hover:text-white">
                 <a href={whatsappUrl2} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                  <MessageSquare className="mr-2 h-6 w-6" /> Arvind
+                  <MessageSquare className="mr-2 h-6 w-6" /> Aniket Motors
                 </a>
               </Button>
             </div>
@@ -64,7 +64,7 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
               </Button>
               <Button asChild variant="outline" className="h-16 text-lg">
                 <a href={emailUrl2} className="flex items-center justify-center">
-                  <Mail className="mr-2 h-6 w-6" /> Arvind
+                  <Mail className="mr-2 h-6 w-6" /> Aniket Motors
                 </a>
               </Button>
             </div>
