@@ -97,17 +97,20 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-start space-x-3 text-gray-400">
                 <MapPin className="h-5 w-5 text-primary mt-1" />
-                <span>Crossings Republik, Ghaziabad, Uttar Pradesh</span>
+                <span>The Manthan School,Sector 16C, Gaur City 2,Ghaziabad, Uttar Pradesh</span>
               </div>
               <div className="flex items-start space-x-3 text-gray-400">
                 <Phone className="h-5 w-5 text-primary mt-1" />
-                <span>+91 9953799936 / +91 9910198557</span>
+                <div className="flex flex-col">
+                  <a href="tel:+919953799936" className="hover:text-primary transition-colors duration-300">+91 9953799936</a>
+                  <a href="tel:+919910198557" className="hover:text-primary transition-colors duration-300">+91 9910198557</a>
+                </div>
               </div>
               <div className="flex items-start space-x-3 text-gray-400">
                 <Mail className="h-5 w-5 text-primary mt-1" />
                 <div className="flex flex-col">
-                  <span>arvindkumar.ak89@gmail.com</span>
-                  <span>sonurajputsr5550@gmail.com</span>
+                  <a href="mailto:sonurajputsr5550@gmail.com" className="hover:text-primary transition-colors duration-300">sonurajputsr5550@gmail.com</a>
+                  <a href="mailto:arvindkumar.ak89@gmail.com" className="hover:text-primary transition-colors duration-300">arvindkumar.ak89@gmail.com</a>
                 </div>
               </div>
             </div>

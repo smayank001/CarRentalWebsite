@@ -5,9 +5,16 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, Filter, Fuel, Users, Cog, Star } from 'lucide-react';
+import { Search, Filter, Fuel, Users, Cog } from 'lucide-react';
 import BookingModal from '@/components/BookingModal';
 import { cars } from '@/data/cars';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Cars = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -86,45 +93,56 @@ const Cars = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredCars.map((car) => (
-              <Card key={car.id} className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group">
-                <div className="relative">
-                  <img src={car.image} alt={car.name} className="w-full h-[250px] object-cover" />
-                  <Badge className="absolute top-3 right-3">⭐ {car.rating}</Badge>
-                  {car.name.includes('Fronx') ? (
-                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="default" className="text-lg bg-blue-600">Coming Soon</Badge></div>
-                  ) : !car.available && (
-                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>
-                  )}
-                </div>
-                <CardContent className="p-6 pb-4">
-                  <h3 className="text-xl font-semibold mb-2">{car.name.replace(' (Coming Soon)', '')}</h3>
-                  <div className="flex items-center text-muted-foreground space-x-4 mb-4 text-sm">
-                    <div className="flex items-center"><Users className="h-4 w-4 mr-1 text-primary" /><span>{car.seats} Seats</span></div>
-                    <div className="flex items-center"><Fuel className="h-4 w-4 mr-1 text-primary" /><span>{car.fuel}</span></div>
-                    <div className="flex items-center"><Cog className="h-4 w-4 mr-1 text-primary" /><span>{car.transmission}</span></div>
+          <Carousel
+            opts={{ align: "start" }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {filteredCars.map((car) => (
+                <CarouselItem key={car.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full">
+                    <Card className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col">
+                      <div className="relative">
+                        <img src={car.image} alt={car.name} className="w-full h-[250px] object-cover" />
+                        <Badge className="absolute top-3 right-3">⭐ {car.rating}</Badge>
+                        {car.name.includes('(Coming Soon)') ? (
+                          <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="default" className="text-lg bg-blue-600">Coming Soon</Badge></div>
+                        ) : !car.available && (
+                          <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>
+                        )}
+                      </div>
+                      <CardContent className="p-6 pb-4 flex-grow">
+                        <h3 className="text-xl font-semibold mb-2">{car.name.replace(' (Coming Soon)', '')}</h3>
+                        <div className="flex items-center text-muted-foreground space-x-4 mb-4 text-sm">
+                          <div className="flex items-center"><Users className="h-4 w-4 mr-1 text-primary" /><span>{car.seats} Seats</span></div>
+                          <div className="flex items-center"><Fuel className="h-4 w-4 mr-1 text-primary" /><span>{car.fuel}</span></div>
+                          <div className="flex items-center"><Cog className="h-4 w-4 mr-1 text-primary" /><span>{car.transmission}</span></div>
+                        </div>
+                        <div className="border-t pt-4">
+                          <div className="flex justify-between items-center">
+                              <span className="text-muted-foreground">Price per day</span>
+                              <span className="text-xl font-bold text-primary">₹{car.price.toLocaleString()}</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                      <CardFooter className="p-6 pt-0">
+                        <div className="flex gap-3 w-full">
+                          <Button variant="outline" className="flex-1" asChild>
+                            <Link to={`/car/${car.id}`}>View Details</Link>
+                          </Button>
+                          <Button className="flex-1" disabled={!car.available} onClick={() => setIsBookingModalOpen(true)}>
+                            Book Now
+                          </Button>
+                        </div>
+                      </CardFooter>
+                    </Card>
                   </div>
-                  <div className="border-t pt-4">
-                    <div className="flex justify-between items-center">
-                        <span className="text-muted-foreground">Price per day</span>
-                        <span className="text-xl font-bold text-primary">₹{car.price.toLocaleString()}</span>
-                    </div>
-                  </div>
-                </CardContent>
-                <CardFooter className="p-6 pt-0">
-                  <div className="flex gap-3 w-full">
-                    <Button variant="outline" className="flex-1" asChild>
-                      <Link to={`/car/${car.id}`}>View Details</Link>
-                    </Button>
-                    <Button className="flex-1" disabled={!car.available} onClick={() => setIsBookingModalOpen(true)}>
-                      Book Now
-                    </Button>
-                  </div>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex" />
+            <CarouselNext className="hidden sm:flex" />
+          </Carousel>
 
           {filteredCars.length === 0 && (
             <div className="text-center py-16">

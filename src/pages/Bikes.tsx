@@ -5,9 +5,16 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, Filter, GaugeCircle, Star, Bike as BikeIcon } from 'lucide-react';
+import { Search, Filter, GaugeCircle, Bike as BikeIcon } from 'lucide-react';
 import BookingModal from '@/components/BookingModal';
 import { bikes } from '@/data/bikes';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Bikes = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,9 +32,9 @@ const Bikes = () => {
     const matchesBrand = selectedBrand === 'all' || bike.brand === selectedBrand;
     const matchesType = selectedType === 'all' || bike.type === selectedType;
     const matchesPrice = priceRange === 'all' || 
-                        (priceRange === 'under1k' && bike.price < 1000) ||
-                        (priceRange === '1kto1500' && bike.price >= 1000 && bike.price < 1500) ||
-                        (priceRange === 'over1500' && bike.price >= 1500);
+                        (priceRange === 'under500' && bike.price < 500) ||
+                        (priceRange === '500to700' && bike.price >= 500 && bike.price < 700) ||
+                        (priceRange === 'over700' && bike.price >= 700);
 
     return matchesSearch && matchesBrand && matchesType && matchesPrice;
   });
@@ -38,10 +45,10 @@ const Bikes = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
-              Our <span className="text-primary">Bike Fleet</span>
+              Our Premier <span className="text-primary">Bike Fleet</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Explore a selection of our popular bikes. Our full fleet includes many other models perfect for any adventure. Get in touch for more options!
+              Explore our featured collection below. Our full inventory includes a wide variety of models to suit any need. Contact us for specific requests!
             </p>
           </div>
 
@@ -72,9 +79,9 @@ const Bikes = () => {
                 <SelectTrigger><SelectValue placeholder="Price Range" /></SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Prices</SelectItem>
-                  <SelectItem value="under1k">Under ₹1000</SelectItem>
-                  <SelectItem value="1kto1500">₹1000 - ₹1500</SelectItem>
-                  <SelectItem value="over1500">Over ₹1500</SelectItem>
+                  <SelectItem value="under500">Under ₹500</SelectItem>
+                  <SelectItem value="500to700">₹500 - ₹700</SelectItem>
+                  <SelectItem value="over700">Over ₹700</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -82,44 +89,55 @@ const Bikes = () => {
 
           <div className="mb-8">
             <p className="text-muted-foreground">
-              Showing {filteredBikes.length} of {bikes.length} vehicles
+              Showing {filteredBikes.length} of our featured vehicles
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredBikes.map((bike) => (
-              <Card key={bike.id} className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group">
-                <div className="relative">
-                  <img src={bike.image} alt={bike.name} className="w-full h-[300px] object-cover" />
-                  <Badge className="absolute top-3 right-3">⭐ {bike.rating}</Badge>
-                  {!bike.available && <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>}
-                </div>
-                <CardContent className="p-6 pb-4">
-                  <h3 className="text-xl font-semibold mb-2">{bike.name}</h3>
-                  <div className="flex items-center text-muted-foreground space-x-4 mb-4 text-sm">
-                    <div className="flex items-center"><BikeIcon className="h-4 w-4 mr-1 text-primary" /><span>{bike.type}</span></div>
-                    <div className="flex items-center"><GaugeCircle className="h-4 w-4 mr-1 text-primary" /><span>{bike.engine}</span></div>
+          <Carousel
+            opts={{ align: "start" }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {filteredBikes.map((bike) => (
+                <CarouselItem key={bike.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full">
+                    <Card className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col">
+                      <div className="relative">
+                        <img src={bike.image} alt={bike.name} className="w-full h-[300px] object-cover" />
+                        <Badge className="absolute top-3 right-3">⭐ {bike.rating}</Badge>
+                        {!bike.available && <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>}
+                      </div>
+                      <CardContent className="p-6 pb-4 flex-grow">
+                        <h3 className="text-xl font-semibold mb-2">{bike.name}</h3>
+                        <div className="flex items-center text-muted-foreground space-x-4 mb-4 text-sm">
+                          <div className="flex items-center"><BikeIcon className="h-4 w-4 mr-1 text-primary" /><span>{bike.type}</span></div>
+                          <div className="flex items-center"><GaugeCircle className="h-4 w-4 mr-1 text-primary" /><span>{bike.engine}</span></div>
+                        </div>
+                        <div className="border-t pt-4">
+                          <div className="flex justify-between items-center">
+                              <span className="text-muted-foreground">Price per day</span>
+                              <span className="text-xl font-bold text-primary">₹{bike.price.toLocaleString()}</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                      <CardFooter className="p-6 pt-0">
+                        <div className="flex gap-3 w-full">
+                          <Button variant="outline" className="flex-1" asChild>
+                            <Link to={`/bike/${bike.id}`}>View Details</Link>
+                          </Button>
+                          <Button className="flex-1" disabled={!bike.available} onClick={() => setIsBookingModalOpen(true)}>
+                            Book Now
+                          </Button>
+                        </div>
+                      </CardFooter>
+                    </Card>
                   </div>
-                  <div className="border-t pt-4">
-                    <div className="flex justify-between items-center">
-                        <span className="text-muted-foreground">Price per day</span>
-                        <span className="text-xl font-bold text-primary">₹{bike.price.toLocaleString()}</span>
-                    </div>
-                  </div>
-                </CardContent>
-                <CardFooter className="p-6 pt-0">
-                  <div className="flex gap-3 w-full">
-                    <Button variant="outline" className="flex-1" asChild>
-                      <Link to={`/bike/${bike.id}`}>View Details</Link>
-                    </Button>
-                    <Button className="flex-1" disabled={!bike.available} onClick={() => setIsBookingModalOpen(true)}>
-                      Book Now
-                    </Button>
-                  </div>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex" />
+            <CarouselNext className="hidden sm:flex" />
+          </Carousel>
 
           {filteredBikes.length === 0 && (
             <div className="text-center py-16">
