@@ -42,7 +42,7 @@ const Bikes = () => {
   return (
     <>
       <div className="min-h-screen pt-24 pb-12">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-16">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
               Our Premier <span className="text-primary">Bike Fleet</span>
@@ -103,7 +103,7 @@ const Bikes = () => {
                   <div className="p-1 h-full">
                     <Card className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col">
                       <div className="relative">
-                        <img src={bike.image} alt={bike.name} className="w-full h-[350px] object-cover" />
+                        <img src={bike.image} alt={bike.name} className="w-full h-[250px] object-cover" />
                         <Badge className="absolute top-3 right-3">⭐ {bike.rating}</Badge>
                         {!bike.available && <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>}
                       </div>
@@ -135,8 +135,8 @@ const Bikes = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
 
           {filteredBikes.length === 0 && (

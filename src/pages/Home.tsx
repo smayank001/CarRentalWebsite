@@ -149,8 +149,8 @@ const Home = () => {
                 )
               })}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
           <div className="text-center mt-12 flex justify-center gap-4">
             <Button size="lg" asChild>

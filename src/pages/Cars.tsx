@@ -42,7 +42,7 @@ const Cars = () => {
   return (
     <>
       <div className="min-h-screen pt-24 pb-12">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-16">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
               Our Premier <span className="text-primary"> Car Fleet</span>
@@ -140,8 +140,8 @@ const Cars = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
 
           {filteredCars.length === 0 && (
