@@ -103,7 +103,7 @@ const Bikes = () => {
                   <div className="p-1 h-full">
                     <Card className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col">
                       <div className="relative">
-                        <img src={bike.image} alt={bike.name} className="w-full h-[300px] object-cover" />
+                        <img src={bike.image} alt={bike.name} className="w-full h-[350px] object-cover" />
                         <Badge className="absolute top-3 right-3">⭐ {bike.rating}</Badge>
                         {!bike.available && <div className="absolute inset-0 bg-black/50 flex items-center justify-center"><Badge variant="destructive" className="text-lg">Unavailable</Badge></div>}
                       </div>

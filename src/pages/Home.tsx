@@ -1,21 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Tag, Clock, Users, Fuel, Cog, Bike as BikeIcon, ArrowRight, Search, Calendar, Key, Quote } from 'lucide-react';
 import BookingModal from '@/components/BookingModal';
 import { cars } from '@/data/cars';
 import { bikes } from '@/data/bikes';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Car } from '@/data/cars';
-import { Bike } from '@/data/bikes';
 
 const Home = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -38,7 +29,7 @@ const Home = () => {
     { name: "Ankit Patel", text: "Best car rental service in Ghaziabad. The prices are affordable and the staff is very helpful. Will definitely rent again." },
   ];
 
-  const featuredVehicles: (Car | Bike)[] = [...cars.slice(0, 3), ...bikes.slice(0, 1)];
+  const featuredVehicles = [...cars.slice(0, 2), ...bikes.slice(0, 1)];
 
   return (
     <>
@@ -65,7 +56,7 @@ const Home = () => {
             <div className="relative animate-fade-in-down">
               <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-primary to-blue-400 rounded-3xl transform -rotate-3 shadow-lg"></div>
               <div className="relative bg-background p-2 rounded-2xl shadow-lg">
-                <img src="/Jeep.jpg" alt="Mahindra Thar" className="w-full h-80 object-cover rounded-xl" />
+                <img src="/banner.jpg" alt="" className="w-full h-100 object-cover rounded-xl" />
               </div>
             </div>
           </div>
@@ -102,56 +93,43 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat">Our Featured <span className="text-primary">Vehicles</span></h2>
             <p className="text-lg text-muted-foreground mt-2">A glimpse of our popular cars and bikes.</p>
           </div>
-          <Carousel
-            opts={{ align: "start", loop: true }}
-            className="w-full max-w-xs sm:max-w-2xl md:max-w-4xl lg:max-w-6xl mx-auto"
-          >
-            <CarouselContent className="-ml-4">
-              {featuredVehicles.map((vehicle) => {
-                const isCar = 'seats' in vehicle;
-                const link = isCar ? `/car/${vehicle.id}` : `/bike/${vehicle.id}`;
-                return (
-                  <CarouselItem key={`${isCar ? 'car' : 'bike'}-${vehicle.id}`} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1 h-full">
-                      <Card className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col">
-                        <div className="relative">
-                          <img src={vehicle.image} alt={vehicle.name} className="w-full h-48 object-cover" />
-                          <Badge className="absolute top-3 right-3">⭐ {vehicle.rating}</Badge>
-                        </div>
-                        <CardContent className="p-6 flex-grow">
-                          <h3 className="text-xl font-semibold mb-2">{vehicle.name}</h3>
-                          <div className="flex items-center text-muted-foreground space-x-4 mb-4 text-sm">
-                            {isCar ? (
-                              <>
-                                <div className="flex items-center"><Users className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.seats} Seats</span></div>
-                                <div className="flex items-center"><Fuel className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.fuel}</span></div>
-                                <div className="flex items-center"><Cog className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.transmission}</span></div>
-                              </>
-                            ) : (
-                              <>
-                                <div className="flex items-center"><BikeIcon className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.type}</span></div>
-                                <div className="flex items-center"><Cog className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.engine}</span></div>
-                              </>
-                            )}
-                          </div>
-                        </CardContent>
-                        <CardFooter className="p-6 pt-0 border-t">
-                          <div className="flex justify-between items-center w-full">
-                            <p className="text-lg font-semibold">₹{vehicle.price.toLocaleString()}<span className="text-sm font-normal text-muted-foreground">/day</span></p>
-                            <Button asChild variant="outline">
-                              <Link to={link}>View Details</Link>
-                            </Button>
-                          </div>
-                        </CardFooter>
-                      </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredVehicles.map((vehicle) => {
+              const isCar = 'seats' in vehicle;
+              const link = isCar ? `/car/${vehicle.id}` : `/bike/${vehicle.id}`;
+              return (
+                <Card key={`${isCar ? 'car' : 'bike'}-${vehicle.id}`} className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group">
+                  <div className="relative">
+                    <img src={vehicle.image} alt={vehicle.name} className="w-full h-[250px]  object-cover" />
+                    <Badge className="absolute top-3 right-3">⭐ {vehicle.rating}</Badge>
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{vehicle.name}</h3>
+                    <div className="flex items-center text-muted-foreground space-x-4 mb-4 text-sm">
+                      {isCar ? (
+                        <>
+                          <div className="flex items-center"><Users className="h-4 w-4 mr-1 text-primary" /><span>{(vehicle as any).seats} Seats</span></div>
+                          <div className="flex items-center"><Fuel className="h-4 w-4 mr-1 text-primary" /><span>{(vehicle as any).fuel}</span></div>
+                          <div className="flex items-center"><Cog className="h-4 w-4 mr-1 text-primary" /><span>{(vehicle as any).transmission}</span></div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex items-center"><BikeIcon className="h-4 w-4 mr-1 text-primary" /><span>{(vehicle as any).type}</span></div>
+                          <div className="flex items-center"><Cog className="h-4 w-4 mr-1 text-primary" /><span>{(vehicle as any).engine}</span></div>
+                        </>
+                      )}
                     </div>
-                  </CarouselItem>
-                )
-              })}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+                    <div className="flex justify-between items-center border-t pt-4">
+                      <p className="text-lg font-semibold">₹{vehicle.price.toLocaleString()}<span className="text-sm font-normal text-muted-foreground">/day</span></p>
+                      <Button asChild variant="outline">
+                        <Link to={link}>View Details</Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
           <div className="text-center mt-12 flex justify-center gap-4">
             <Button size="lg" asChild>
               <Link to="/cars">View All Cars</Link>

@@ -216,8 +216,8 @@ export const cars: Car[] = [
     brand: 'Maruti',
     type: 'SUV',
     price: 4000,
-    image: '/scorpion.jpg', // Placeholder image
-    images: ['/scorpion.jpg'],
+    image: '/grandvitara.jpg', // Placeholder image
+    images: ['/grandvitara.jpg'],
     rating: 4.7,
     reviews: 95,
     transmission: 'Automatic',
@@ -268,8 +268,8 @@ export const cars: Car[] = [
     brand: 'Maruti',
     type: 'Hatchback',
     price: 2200,
-    image: '/marutibaleno.jpg',
-    images: ['/marutibaleno.jpg'],
+    image: '/oldbaleno.jpg',
+    images: ['/oldbaleno.jpg'],
     rating: 4.5,
     reviews: 150,
     transmission: 'Manual',
