@@ -53,8 +53,8 @@ const Bikes = () => {
           </div>
 
           <div className="bg-card p-6 rounded-lg shadow-sm mb-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-              <div className="relative lg:col-span-2">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="relative col-span-2 md:col-span-4 lg:col-span-2">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search bikes..."
@@ -99,13 +99,13 @@ const Bikes = () => {
           >
             <CarouselContent className="-ml-4">
               {filteredBikes.map((bike) => (
-                <CarouselItem key={bike.id} className="pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <CarouselItem key={bike.id} className="pl-4 basis-11/12 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                   <VehicleCard vehicle={bike} onBookNow={() => setIsBookingModalOpen(true)} />
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex left-[-20px] bg-white hover:bg-gray-100 text-primary rounded-full shadow-lg border-none h-10 w-10" />
-            <CarouselNext className="hidden sm:flex right-[-20px] bg-white hover:bg-gray-100 text-primary rounded-full shadow-lg border-none h-10 w-10" />
+            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background text-primary rounded-full shadow-lg border-none h-8 w-8" />
+            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background text-primary rounded-full shadow-lg border-none h-8 w-8" />
           </Carousel>
 
           {filteredBikes.length === 0 && (

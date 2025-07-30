@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Shield, Tag, Clock, Users, Fuel, Cog, Bike as BikeIcon, ArrowRight, Search, Calendar, Key, Quote } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Shield, Tag, Clock, ArrowRight, Search, Calendar, Key, Quote } from 'lucide-react';
 import BookingModal from '@/components/BookingModal';
 import { cars } from '@/data/cars';
 import { bikes } from '@/data/bikes';
@@ -17,6 +16,7 @@ import {
 import { Car } from '@/data/cars';
 import { Bike } from '@/data/bikes';
 import LocalSeoContent from '@/components/LocalSeoContent';
+import VehicleCard from '@/components/VehicleCard';
 
 const Home = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -39,7 +39,7 @@ const Home = () => {
     { name: "Ankit Patel", text: "Best car rental service in Ghaziabad. The prices are affordable and the staff is very helpful. Will definitely rent again." },
   ];
 
-  const featuredVehicles: (Car | Bike)[] = [...cars.slice(0, 3), ...bikes.slice(0, 1)];
+  const featuredVehicles: (Car | Bike)[] = [...cars.slice(0, 4), ...bikes.slice(0, 2)];
 
   return (
     <>
@@ -108,53 +108,19 @@ const Home = () => {
           </div>
           <Carousel
             opts={{ align: "start", loop: true }}
-            className="w-full max-w-xs sm:max-w-2xl md:max-w-4xl lg:max-w-6xl mx-auto"
+            className="w-full"
           >
             <CarouselContent className="-ml-4">
-              {featuredVehicles.map((vehicle) => {
-                const isCar = 'seats' in vehicle;
-                const link = isCar ? `/car/${vehicle.id}` : `/bike/${vehicle.id}`;
-                return (
-                  <CarouselItem key={`${isCar ? 'car' : 'bike'}-${vehicle.id}`} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1 h-full">
-                      <Card className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col">
-                        <div className="relative">
-                          <img src={vehicle.image} alt={`${vehicle.name} for rent in Ghaziabad`} className="w-full h-48 object-cover" />
-                          <Badge className="absolute top-3 right-3">⭐ {vehicle.rating}</Badge>
-                        </div>
-                        <CardContent className="p-6 flex-grow">
-                          <h3 className="text-xl font-semibold mb-2">{vehicle.name}</h3>
-                          <div className="flex items-center text-muted-foreground space-x-4 mb-4 text-sm">
-                            {isCar ? (
-                              <>
-                                <div className="flex items-center"><Users className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.seats} Seats</span></div>
-                                <div className="flex items-center"><Fuel className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.fuel}</span></div>
-                                <div className="flex items-center"><Cog className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.transmission}</span></div>
-                              </>
-                            ) : (
-                              <>
-                                <div className="flex items-center"><BikeIcon className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.type}</span></div>
-                                <div className="flex items-center"><Cog className="h-4 w-4 mr-1 text-primary" /><span>{vehicle.engine}</span></div>
-                              </>
-                            )}
-                          </div>
-                        </CardContent>
-                        <CardFooter className="p-6 pt-0 border-t">
-                          <div className="flex justify-between items-center w-full">
-                            <p className="text-lg font-semibold">₹{vehicle.price.toLocaleString()}<span className="text-sm font-normal text-muted-foreground">/day</span></p>
-                            <Button asChild variant="outline">
-                              <Link to={link}>View Details</Link>
-                            </Button>
-                          </div>
-                        </CardFooter>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                )
-              })}
+              {featuredVehicles.map((vehicle) => (
+                <CarouselItem key={`${'seats' in vehicle ? 'car' : 'bike'}-${vehicle.id}`} className="pl-4 basis-11/12 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                  <div className="p-1 h-full">
+                    <VehicleCard vehicle={vehicle} onBookNow={() => setIsBookingModalOpen(true)} />
+                  </div>
+                </CarouselItem>
+              ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex left-[-20px] bg-white hover:bg-gray-100 text-primary rounded-full shadow-lg border-none h-10 w-10" />
-            <CarouselNext className="hidden sm:flex right-[-20px] bg-white hover:bg-gray-100 text-primary rounded-full shadow-lg border-none h-10 w-10" />
+            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background text-primary rounded-full shadow-lg border-none h-8 w-8" />
+            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background text-primary rounded-full shadow-lg border-none h-8 w-8" />
           </Carousel>
           <div className="text-center mt-12 flex justify-center gap-4">
             <Button size="lg" asChild>

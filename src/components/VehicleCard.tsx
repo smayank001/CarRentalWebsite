@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Fuel, Users, Cog, Bike as BikeIcon, Star } from 'lucide-react';
+import { Fuel, Users, Cog, Bike as BikeIcon, GaugeCircle } from 'lucide-react';
 import type { Car } from '@/data/cars';
 import type { Bike } from '@/data/bikes';
 
@@ -20,62 +19,57 @@ const VehicleCard = ({ vehicle, onBookNow }: VehicleCardProps) => {
   const isComingSoon = vehicle.name.includes('(Coming Soon)');
 
   return (
-    <div className="p-1 h-full">
-      <Card className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col">
+    <Card className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col text-left">
+      <Link to={link} className="flex-grow flex flex-col">
         <div className="relative">
           <div className="overflow-hidden rounded-t-lg">
-            <img src={vehicle.image} alt={vehicle.name} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <img src={vehicle.image} alt={vehicle.name} className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
           </div>
-          <Badge className="absolute top-3 right-3 bg-black/60 text-white flex items-center gap-1 border-transparent">
-            <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" /> {vehicle.rating}
-          </Badge>
-          {isComingSoon ? (
-            <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-              <Badge variant="default" className="text-base bg-primary text-primary-foreground">Coming Soon</Badge>
-            </div>
-          ) : !vehicle.available && (
-            <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-              <Badge variant="destructive" className="text-base">Unavailable</Badge>
-            </div>
-          )}
         </div>
         <CardContent className="p-4 flex-grow">
-          <h3 className="text-lg font-bold font-montserrat mb-2 truncate" title={vehicle.name.replace(' (Coming Soon)', '')}>
+          <h3 className="font-bold font-montserrat truncate group-hover:text-primary" title={vehicle.name.replace(' (Coming Soon)', '')}>
             {vehicle.name.replace(' (Coming Soon)', '')}
           </h3>
-          <div className="flex flex-wrap items-center text-muted-foreground gap-x-4 gap-y-2 mb-4 text-sm">
+          <p className="text-sm text-muted-foreground mb-3">Model {vehicle.specifications.year}</p>
+          
+          <div className="flex flex-wrap items-center text-muted-foreground gap-x-4 gap-y-2 text-xs">
             {isCar(vehicle) ? (
               <>
-                <div className="flex items-center gap-1.5"><Users className="h-4 w-4 text-primary" /><span>{vehicle.seats} Seats</span></div>
-                <div className="flex items-center gap-1.5"><Fuel className="h-4 w-4 text-primary" /><span>{vehicle.fuel}</span></div>
-                <div className="flex items-center gap-1.5"><Cog className="h-4 w-4 text-primary" /><span>{vehicle.transmission}</span></div>
+                <div className="flex items-center gap-1.5"><Fuel className="h-4 w-4" /><span>{vehicle.fuel}</span></div>
+                <div className="flex items-center gap-1.5"><Cog className="h-4 w-4" /><span>{vehicle.transmission}</span></div>
+                <div className="flex items-center gap-1.5"><Users className="h-4 w-4" /><span>{vehicle.seats} Seater</span></div>
               </>
             ) : (
               <>
-                <div className="flex items-center gap-1.5"><BikeIcon className="h-4 w-4 text-primary" /><span>{vehicle.type}</span></div>
-                <div className="flex items-center gap-1.5"><Cog className="h-4 w-4 text-primary" /><span>{vehicle.engine}</span></div>
+                <div className="flex items-center gap-1.5"><BikeIcon className="h-4 w-4" /><span>{vehicle.type}</span></div>
+                <div className="flex items-center gap-1.5"><Cog className="h-4 w-4" /><span>{vehicle.specifications.engine}</span></div>
+                <div className="flex items-center gap-1.5"><GaugeCircle className="h-4 w-4" /><span>{vehicle.specifications.mileage}</span></div>
               </>
             )}
           </div>
-          <div className="border-t pt-3">
-            <div className="flex justify-between items-center">
-                <span className="text-sm text-muted-foreground">Price per day</span>
-                <span className="text-2xl font-bold text-foreground">₹{vehicle.price.toLocaleString()}</span>
-            </div>
-          </div>
         </CardContent>
-        <CardFooter className="p-4 pt-0 mt-auto">
-          <div className="flex gap-3 w-full">
-            <Button variant="outline" className="flex-1" asChild>
-              <Link to={link}>View Details</Link>
-            </Button>
-            <Button className="flex-1" disabled={!vehicle.available || isComingSoon} onClick={onBookNow}>
-              Book Now
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
-    </div>
+      </Link>
+      <CardFooter className="p-4 pt-0 border-t mt-auto">
+        <div className="w-full">
+            <div className="flex justify-between items-baseline mb-3">
+                <p className="text-sm text-muted-foreground">Price / day</p>
+                <p className="text-xl font-bold text-foreground">₹{vehicle.price.toLocaleString()}</p>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+                <Button asChild variant="outline" size="sm">
+                    <Link to={link}>View Details</Link>
+                </Button>
+                <Button 
+                    size="sm" 
+                    disabled={!vehicle.available || isComingSoon} 
+                    onClick={onBookNow}
+                >
+                    Book Now
+                </Button>
+            </div>
+        </div>
+      </CardFooter>
+    </Card>
   );
 };
 
