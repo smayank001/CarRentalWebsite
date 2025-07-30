@@ -99,13 +99,13 @@ const Bikes = () => {
           >
             <CarouselContent className="-ml-4">
               {filteredBikes.map((bike) => (
-                <CarouselItem key={bike.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={bike.id} className="pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                   <VehicleCard vehicle={bike} onBookNow={() => setIsBookingModalOpen(true)} />
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden sm:flex left-[-20px] bg-white hover:bg-gray-100 text-primary rounded-full shadow-lg border-none h-10 w-10" />
+            <CarouselNext className="hidden sm:flex right-[-20px] bg-white hover:bg-gray-100 text-primary rounded-full shadow-lg border-none h-10 w-10" />
           </Carousel>
 
           {filteredBikes.length === 0 && (

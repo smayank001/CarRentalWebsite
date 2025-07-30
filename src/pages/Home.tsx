@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/carousel";
 import { Car } from '@/data/cars';
 import { Bike } from '@/data/bikes';
+import LocalSeoContent from '@/components/LocalSeoContent';
 
 const Home = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -48,7 +49,7 @@ const Home = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left animate-fade-in-up">
               <h1 className="text-4xl md:text-6xl font-bold font-montserrat mb-4 leading-tight">
-                Your Perfect Ride, <br /><span className="text-primary">Just a Click Away</span>
+                Self-Drive Car Rental <br /><span className="text-primary">in Ghaziabad</span>
               </h1>
               <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto md:mx-0">
                 Explore Ghaziabad with our premium fleet of cars and bikes. Quality vehicles, competitive prices, and exceptional service guaranteed.
@@ -65,15 +66,18 @@ const Home = () => {
             <div className="relative animate-fade-in-down">
               <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-primary to-blue-400 rounded-3xl transform -rotate-3 shadow-lg"></div>
               <div className="relative bg-background p-2 rounded-2xl shadow-lg">
-                <img src="/Jeep.jpg" alt="Mahindra Thar" className="w-full h-80 object-cover rounded-xl" />
+                <img src="/Jeep.jpg" alt="Mahindra Thar SUV for rent in Ghaziabad" className="w-full h-80 object-cover rounded-xl" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Local SEO Content Section */}
+      <LocalSeoContent />
+
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 bg-background">
+      <section id="how-it-works" className="py-20 bg-secondary">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat">How It Works</h2>
@@ -96,11 +100,11 @@ const Home = () => {
       </section>
 
       {/* Featured Vehicles Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat">Our Featured <span className="text-primary">Vehicles</span></h2>
-            <p className="text-lg text-muted-foreground mt-2">A glimpse of our popular cars and bikes.</p>
+            <p className="text-lg text-muted-foreground mt-2">A glimpse of our popular cars and bikes for rent in Ghaziabad.</p>
           </div>
           <Carousel
             opts={{ align: "start", loop: true }}
@@ -115,7 +119,7 @@ const Home = () => {
                     <div className="p-1 h-full">
                       <Card className="bg-card overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col">
                         <div className="relative">
-                          <img src={vehicle.image} alt={vehicle.name} className="w-full h-48 object-cover" />
+                          <img src={vehicle.image} alt={`${vehicle.name} for rent in Ghaziabad`} className="w-full h-48 object-cover" />
                           <Badge className="absolute top-3 right-3">⭐ {vehicle.rating}</Badge>
                         </div>
                         <CardContent className="p-6 flex-grow">
@@ -149,8 +153,8 @@ const Home = () => {
                 )
               })}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden sm:flex left-[-20px] bg-white hover:bg-gray-100 text-primary rounded-full shadow-lg border-none h-10 w-10" />
+            <CarouselNext className="hidden sm:flex right-[-20px] bg-white hover:bg-gray-100 text-primary rounded-full shadow-lg border-none h-10 w-10" />
           </Carousel>
           <div className="text-center mt-12 flex justify-center gap-4">
             <Button size="lg" asChild>
@@ -164,10 +168,10 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="why-us" className="py-20 bg-background">
+      <section id="why-us" className="py-20 bg-secondary">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-montserrat">Why Choose Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-montserrat">Why Choose AToZ Car Rentals?</h2>
             <p className="text-lg text-muted-foreground mt-2">Your satisfaction is our priority.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -187,11 +191,11 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat">What Our Customers Say</h2>
-            <p className="text-lg text-muted-foreground mt-2">Real stories from our happy renters.</p>
+            <p className="text-lg text-muted-foreground mt-2">Real stories from our happy renters in Ghaziabad.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
