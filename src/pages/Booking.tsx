@@ -1,15 +1,30 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup, SelectLabel } from '@/components/ui/select';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { toast } from 'sonner';
-import { cars } from '@/data/cars';
-import { bikes } from '@/data/bikes';
-import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  SelectGroup,
+  SelectLabel,
+} from "@/components/ui/select";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { toast } from "sonner";
+import { cars } from "@/data/cars";
+import { bikes } from "@/data/bikes";
+import { useState } from "react";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -19,22 +34,28 @@ import {
   AlertDialogFooter,
   AlertDialogCancel,
 } from "@/components/ui/alert-dialog";
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare } from "lucide-react";
 
 const bookingSchema = z.object({
   fullName: z.string().min(2, { message: "Full name is required" }),
-  phoneNumber: z.string().min(10, { message: "A valid phone number is required" }),
+  phoneNumber: z
+    .string()
+    .min(10, { message: "A valid phone number is required" }),
   selectedVehicle: z.string().min(1, { message: "Please select a vehicle" }),
   duration: z.string().min(1, { message: "Please select a duration" }),
-  pickupDate: z.string()
+  pickupDate: z
+    .string()
     .min(1, { message: "Pickup date is required" })
-    .refine(date => {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0); // Set to the beginning of today
-      return new Date(date) >= today;
-    }, {
-      message: "Pickup date cannot be in the past.",
-    }),
+    .refine(
+      (date) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set to the beginning of today
+        return new Date(date) >= today;
+      },
+      {
+        message: "Pickup date cannot be in the past.",
+      }
+    ),
   pickupTime: z.string().min(1, { message: "Pickup time is required" }),
 });
 
@@ -47,7 +68,7 @@ const Booking = () => {
   const [isDialogVisible, setDialogVisible] = useState(false);
   const [formData, setFormData] = useState<BookingFormValues | null>(null);
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
 
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(bookingSchema),
@@ -78,9 +99,11 @@ const Booking = () => {
 *Pickup Date:* ${formData.pickupDate}
 *Pickup Time:* ${formData.pickupTime}`;
 
-    const whatsappUrl = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-    
-    window.open(whatsappUrl, '_blank');
+    const whatsappUrl = `https://wa.me/${number}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
     toast.success("Redirecting to WhatsApp to confirm your booking!");
     setDialogVisible(false);
   };
@@ -94,7 +117,8 @@ const Booking = () => {
               Book Your <span className="text-primary">Ride</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Complete the form below to reserve your vehicle. We'll confirm your booking via WhatsApp shortly after.
+              Complete the form below to reserve your vehicle. We'll confirm
+              your booking via WhatsApp shortly after.
             </p>
           </div>
 
@@ -102,44 +126,159 @@ const Booking = () => {
             <Card>
               <CardHeader>
                 <CardTitle>Booking Details</CardTitle>
-                <p className="text-muted-foreground">Fill in your details and we'll get your vehicle ready for pickup.</p>
+                <p className="text-muted-foreground">
+                  Fill in your details and we'll get your vehicle ready for
+                  pickup.
+                </p>
               </CardHeader>
               <CardContent>
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-6"
+                  >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField control={form.control} name="fullName" render={({ field }) => (<FormItem><FormLabel>Full Name *</FormLabel><FormControl><Input placeholder="Enter your full name" {...field} /></FormControl><FormMessage /></FormItem>)} />
-                      <FormField control={form.control} name="phoneNumber" render={({ field }) => (<FormItem><FormLabel>Phone Number *</FormLabel><FormControl><Input placeholder="Enter your phone number" {...field} /></FormControl><FormMessage /></FormItem>)} />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField control={form.control} name="selectedVehicle" render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Select Vehicle *</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormField
+                        control={form.control}
+                        name="fullName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Full Name *</FormLabel>
                             <FormControl>
-                              <SelectTrigger><SelectValue placeholder="Choose a car or bike" /></SelectTrigger>
+                              <Input
+                                placeholder="Enter your full name"
+                                {...field}
+                              />
                             </FormControl>
-                            <SelectContent>
-                              <SelectGroup>
-                                <SelectLabel>Cars</SelectLabel>
-                                {cars.filter(car => car.available).map(car => <SelectItem key={car.id} value={car.name}>{car.name}</SelectItem>)}
-                              </SelectGroup>
-                              <SelectGroup>
-                                <SelectLabel>Bikes</SelectLabel>
-                                {bikes.filter(bike => bike.available).map(bike => <SelectItem key={bike.id} value={bike.name}>{bike.name}</SelectItem>)}
-                              </SelectGroup>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={form.control} name="duration" render={({ field }) => (<FormItem><FormLabel>Duration *</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue placeholder="Select duration" /></SelectTrigger></FormControl><SelectContent><SelectItem value="1 Day">1 Day</SelectItem><SelectItem value="2-3 Days">2-3 Days</SelectItem><SelectItem value="4-6 Days">4-6 Days</SelectItem><SelectItem value="1 Week+">1 Week+</SelectItem></SelectContent></Select><FormMessage /></FormItem>)} />
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="phoneNumber"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone Number *</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Enter your phone number"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField control={form.control} name="pickupDate" render={({ field }) => (<FormItem><FormLabel>Pickup Date *</FormLabel><FormControl><Input type="date" {...field} min={today} /></FormControl><FormMessage /></FormItem>)} />
-                      <FormField control={form.control} name="pickupTime" render={({ field }) => (<FormItem><FormLabel>Pickup Time *</FormLabel><FormControl><Input type="time" {...field} /></FormControl><FormMessage /></FormItem>)} />
+                      <FormField
+                        control={form.control}
+                        name="selectedVehicle"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Select Vehicle *</FormLabel>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Choose a car or bike" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectGroup>
+                                  <SelectLabel>Cars</SelectLabel>
+                                  {cars
+                                    .filter((car) => car.available)
+                                    .map((car) => (
+                                      <SelectItem key={car.id} value={car.name}>
+                                        {car.name}
+                                      </SelectItem>
+                                    ))}
+                                </SelectGroup>
+                                <SelectGroup>
+                                  <SelectLabel>Bikes</SelectLabel>
+                                  {bikes
+                                    .filter((bike) => bike.available)
+                                    .map((bike) => (
+                                      <SelectItem
+                                        key={bike.id}
+                                        value={bike.name}
+                                      >
+                                        {bike.name}
+                                      </SelectItem>
+                                    ))}
+                                </SelectGroup>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="duration"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Duration *</FormLabel>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select duration" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="1 Day">1 Day</SelectItem>
+                                <SelectItem value="2-3 Days">
+                                  2-3 Days
+                                </SelectItem>
+                                <SelectItem value="4-6 Days">
+                                  4-6 Days
+                                </SelectItem>
+                                <SelectItem value="1 Week+">1 Week+</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </div>
-                    <Button type="submit" className="w-full" size="lg">Confirm Booking</Button>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
+                        name="pickupDate"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Pickup Date *</FormLabel>
+                            <FormControl>
+                              <Input type="date" {...field} min={today} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="pickupTime"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Pickup Time *</FormLabel>
+                            <FormControl>
+                              <Input type="time" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <Button type="submit" className="w-full" size="lg">
+                      Confirm Booking
+                    </Button>
                   </form>
                 </Form>
               </CardContent>
@@ -153,19 +292,20 @@ const Booking = () => {
           <AlertDialogHeader>
             <AlertDialogTitle>Confirm Your Booking</AlertDialogTitle>
             <AlertDialogDescription>
-              Please send your booking details to one of our contacts on WhatsApp to finalize your reservation.
+              Please send your booking details to one of our contacts on
+              WhatsApp to finalize your reservation.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="space-y-4 py-4">
             <Button
               onClick={() => handleContact(WHATSAPP_NUMBER_1)}
-              className="w-full h-16 text-lg bg-green-500 text-white hover:bg-green-600 hover:text-white"
+              className="w-full h-16 text-lg bg-green-500 text-white hover:bg-green-599 hover:text-white"
             >
               <MessageSquare className="mr-2 h-6 w-6" /> Contact Sonu
             </Button>
             <Button
               onClick={() => handleContact(WHATSAPP_NUMBER_2)}
-              className="w-full h-16 text-lg bg-green-500 text-white hover:bg-green-600 hover:text-white"
+              className="w-full h-16 text-lg bg-green-500 text-white hover:bg-green-599 hover:text-white"
             >
               <MessageSquare className="mr-2 h-6 w-6" /> Contact Aniket Motors
             </Button>
