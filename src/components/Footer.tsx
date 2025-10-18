@@ -22,17 +22,17 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Facebook,
-      href: "",
+      href: "https://facebook.com/yourprofile",
       name: "Facebook",
     },
     {
       icon: Twitter,
-      href: "",
+      href: "https://twitter.com/yourprofile",
       name: "Twitter",
     },
     {
       icon: Instagram,
-      href: "",
+      href: "https://instagram.com/yourprofile",
       name: "Instagram",
     },
   ];
