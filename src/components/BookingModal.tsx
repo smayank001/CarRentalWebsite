@@ -15,9 +15,9 @@ interface BookingModalProps {
   onOpenChange: (open: boolean) => void;
 }
 
-const WHATSAPP_NUMBER_1 = "919953799936";
+// const WHATSAPP_NUMBER_1 = "919953799936";
 const WHATSAPP_NUMBER_2 = "919910198557";
-const EMAIL_ADDRESS_1 = "sonurajputsr5550@gmail.com";
+// const EMAIL_ADDRESS_1 = "sonurajputsr5550@gmail.com";
 const EMAIL_ADDRESS_2 = "aniketmotors.ghz@gmail.com";
 
 const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
@@ -25,10 +25,10 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
     "I'm interested in booking a vehicle."
   );
 
-  const whatsappUrl1 = `https://wa.me/${WHATSAPP_NUMBER_1}?text=${whatsappMessage}`;
+  // const whatsappUrl1 = `https://wa.me/${WHATSAPP_NUMBER_1}?text=${whatsappMessage}`;
   const whatsappUrl2 = `https://wa.me/${WHATSAPP_NUMBER_2}?text=${whatsappMessage}`;
 
-  const emailUrl1 = `mailto:${EMAIL_ADDRESS_1}?subject=Vehicle%20Booking%20Inquiry&body=${whatsappMessage}`;
+  // const emailUrl1 = `mailto:${EMAIL_ADDRESS_1}?subject=Vehicle%20Booking%20Inquiry&body=${whatsappMessage}`;
   const emailUrl2 = `mailto:${EMAIL_ADDRESS_2}?subject=Vehicle%20Booking%20Inquiry&body=${whatsappMessage}`;
 
   return (
@@ -46,7 +46,7 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
               Contact via WhatsApp
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Button
+              {/* <Button
                 asChild
                 variant="outline"
                 className="h-16 text-lg bg-green-500 text-white hover:bg-green-599 hover:text-white"
@@ -59,7 +59,7 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
                 >
                   <MessageSquare className="mr-2 h-6 w-6" /> Sonu
                 </a>
-              </Button>
+              </Button> */}
               <Button
                 asChild
                 variant="outline"
@@ -81,14 +81,14 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
               Contact via Email
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Button asChild variant="outline" className="h-16 text-lg">
+              {/* <Button asChild variant="outline" className="h-16 text-lg">
                 <a
                   href={emailUrl1}
                   className="flex items-center justify-center"
                 >
                   <Mail className="mr-2 h-6 w-6" /> Sonu
                 </a>
-              </Button>
+              </Button> */}
               <Button asChild variant="outline" className="h-16 text-lg">
                 <a
                   href={emailUrl2}

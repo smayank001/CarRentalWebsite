@@ -22,17 +22,17 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Facebook,
-      href: "https://www.facebook.com/share/1GxmFFzcwX/",
+      href: "",
       name: "Facebook",
     },
     {
       icon: Twitter,
-      href: "https://twitter.com/Sonu76895534?t=J2HZ6q8i8Ohq3Vmjid6LNQIJhpYfg5oiO5REql5Cm70&s=09",
+      href: "",
       name: "Twitter",
     },
     {
       icon: Instagram,
-      href: "https://www.instagram.com/atozcar.rental2025?igsh=MW81ajI3MW1vNnpjaA==",
+      href: "",
       name: "Instagram",
     },
   ];
@@ -114,12 +114,12 @@ const Footer = () => {
               <div className="flex items-start space-x-3 text-gray-400">
                 <Phone className="h-5 w-5 text-primary mt-1" />
                 <div className="flex flex-col">
-                  <a
+                  {/* <a
                     href="tel:+919953799936"
                     className="hover:text-primary transition-colors duration-300"
                   >
                     +91 9953799936
-                  </a>
+                  </a> */}
                   <a
                     href="tel:+919910198557"
                     className="hover:text-primary transition-colors duration-300"
@@ -131,12 +131,12 @@ const Footer = () => {
               <div className="flex items-start space-x-3 text-gray-400">
                 <Mail className="h-5 w-5 text-primary mt-1" />
                 <div className="flex flex-col">
-                  <a
+                  {/* <a
                     href="mailto:sonurajputsr5550@gmail.com"
                     className="hover:text-primary transition-colors duration-300"
                   >
                     sonurajputsr5550@gmail.com
-                  </a>
+                  </a> */}
                   <a
                     href="mailto:arvindkumar.ak89@gmail.com"
                     className="hover:text-primary transition-colors duration-300"
