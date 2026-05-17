@@ -22,17 +22,12 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Facebook,
-      href: "https://facebook.com/yourprofile",
+      href: "https://www.facebook.com/share/18Xrbe8Y9u/",
       name: "Facebook",
     },
     {
-      icon: Twitter,
-      href: "https://twitter.com/yourprofile",
-      name: "Twitter",
-    },
-    {
       icon: Instagram,
-      href: "https://instagram.com/yourprofile",
+      href: "https://www.instagram.com/srcar.rental05?utm_source=qr&igsh=MXcweG5nMTY1MXNpeQ%3D%3D",
       name: "Instagram",
     },
   ];
@@ -44,15 +39,13 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="p-2 rounded-lg bg-primary text-primary-foreground">
-                <Car className="h-6 w-6" />
-              </div>
-              <span className="text-xl font-bold font-montserrat text-white">
-                AToZ Car Rentals
+              <img src="/logo.jpg" alt="SR Car Rental Logo" className="h-10 w-10 object-cover rounded-full border border-yellow-500/20 bg-black shadow-md" />
+              <span className="text-xl font-bold font-montserrat text-white tracking-wide">
+                SR Car Rental
               </span>
             </Link>
             <p className="text-gray-400 leading-relaxed">
-              Affordable, reliable, and convenient car rentals in Ghaziabad.
+              Affordable, reliable, and convenient car and bike rentals in Ghaziabad.
               Your journey starts here.
             </p>
             <div className="flex space-x-4">
@@ -107,41 +100,28 @@ const Footer = () => {
               <div className="flex items-start space-x-3 text-gray-400">
                 <MapPin className="h-5 w-5 text-primary mt-1" />
                 <span>
-                  The Manthan School,Sector 16C, Gaur City 2,Ghaziabad, Uttar
-                  Pradesh
+                  Ghaziabad, Vijay Nagar, Sector 9, Rathi Road
                 </span>
               </div>
               <div className="flex items-start space-x-3 text-gray-400">
                 <Phone className="h-5 w-5 text-primary mt-1" />
                 <div className="flex flex-col">
-                  {/* <a
-                    href="tel:+919953799936"
-                    className="hover:text-primary transition-colors duration-300"
-                  >
-                    +91 9953799936
-                  </a> */}
                   <a
-                    href="tel:+919910198557"
+                    href="tel:+918595499936"
                     className="hover:text-primary transition-colors duration-300"
                   >
-                    +91 9910198557
+                    +91 8595499936
                   </a>
                 </div>
               </div>
               <div className="flex items-start space-x-3 text-gray-400">
                 <Mail className="h-5 w-5 text-primary mt-1" />
                 <div className="flex flex-col">
-                  {/* <a
+                  <a
                     href="mailto:sonurajputsr5550@gmail.com"
                     className="hover:text-primary transition-colors duration-300"
                   >
                     sonurajputsr5550@gmail.com
-                  </a> */}
-                  <a
-                    href="mailto:arvindkumar.ak89@gmail.com"
-                    className="hover:text-primary transition-colors duration-300"
-                  >
-                    arvindkumar.ak89@gmail.com
                   </a>
                 </div>
               </div>
@@ -152,7 +132,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            © 2024 AToZ Car Rentals. All rights reserved.
+            © 2026 SR Car Rental. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link

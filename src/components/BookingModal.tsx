@@ -15,21 +15,16 @@ interface BookingModalProps {
   onOpenChange: (open: boolean) => void;
 }
 
-// const WHATSAPP_NUMBER_1 = "919953799936";
-const WHATSAPP_NUMBER_2 = "919910198557";
-// const EMAIL_ADDRESS_1 = "sonurajputsr5550@gmail.com";
-const EMAIL_ADDRESS_2 = "aniketmotors.ghz@gmail.com";
+const WHATSAPP_NUMBER = "918595499936";
+const EMAIL_ADDRESS = "sonurajputsr5550@gmail.com";
 
 const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
   const whatsappMessage = encodeURIComponent(
-    "I'm interested in booking a vehicle."
+    "I'm interested in booking a vehicle with SR Car Rental."
   );
 
-  // const whatsappUrl1 = `https://wa.me/${WHATSAPP_NUMBER_1}?text=${whatsappMessage}`;
-  const whatsappUrl2 = `https://wa.me/${WHATSAPP_NUMBER_2}?text=${whatsappMessage}`;
-
-  // const emailUrl1 = `mailto:${EMAIL_ADDRESS_1}?subject=Vehicle%20Booking%20Inquiry&body=${whatsappMessage}`;
-  const emailUrl2 = `mailto:${EMAIL_ADDRESS_2}?subject=Vehicle%20Booking%20Inquiry&body=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+  const emailUrl = `mailto:${EMAIL_ADDRESS}?subject=Vehicle%20Booking%20Inquiry&body=${whatsappMessage}`;
 
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
@@ -37,67 +32,45 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
         <AlertDialogHeader>
           <AlertDialogTitle>Book Your Ride</AlertDialogTitle>
           <AlertDialogDescription>
-            Choose your preferred method to contact us for booking.
+            Choose your preferred method to contact SR Car Rental for bookings.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <div className="space-y-4 py-4">
+        <div className="space-y-6 py-4">
           <div>
-            <h3 className="mb-2 font-semibold text-center">
+            <h3 className="mb-2 font-semibold text-center text-muted-foreground text-sm uppercase tracking-wider">
               Contact via WhatsApp
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* <Button
-                asChild
-                variant="outline"
-                className="h-16 text-lg bg-green-500 text-white hover:bg-green-599 hover:text-white"
+            <Button
+              asChild
+              variant="outline"
+              className="w-full h-16 text-lg bg-green-500 hover:bg-green-600 text-white hover:text-white border-none shadow-md transition-all duration-300"
+            >
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center font-semibold"
               >
-                <a
-                  href={whatsappUrl1}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center"
-                >
-                  <MessageSquare className="mr-2 h-6 w-6" /> Sonu
-                </a>
-              </Button> */}
-              <Button
-                asChild
-                variant="outline"
-                className="h-16 text-lg bg-green-500 text-white hover:bg-green-599 hover:text-white"
-              >
-                <a
-                  href={whatsappUrl2}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center"
-                >
-                  <MessageSquare className="mr-2 h-6 w-6" /> Aniket Motors
-                </a>
-              </Button>
-            </div>
+                <MessageSquare className="mr-2 h-6 w-6" /> Chat on WhatsApp
+              </a>
+            </Button>
           </div>
           <div>
-            <h3 className="mb-2 font-semibold text-center">
+            <h3 className="mb-2 font-semibold text-center text-muted-foreground text-sm uppercase tracking-wider">
               Contact via Email
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* <Button asChild variant="outline" className="h-16 text-lg">
-                <a
-                  href={emailUrl1}
-                  className="flex items-center justify-center"
-                >
-                  <Mail className="mr-2 h-6 w-6" /> Sonu
-                </a>
-              </Button> */}
-              <Button asChild variant="outline" className="h-16 text-lg">
-                <a
-                  href={emailUrl2}
-                  className="flex items-center justify-center"
-                >
-                  <Mail className="mr-2 h-6 w-6" /> Aniket Motors
-                </a>
-              </Button>
-            </div>
+            <Button 
+              asChild 
+              variant="outline" 
+              className="w-full h-16 text-lg hover:bg-primary hover:text-primary-foreground border shadow-sm transition-all duration-300"
+            >
+              <a
+                href={emailUrl}
+                className="flex items-center justify-center font-semibold"
+              >
+                <Mail className="mr-2 h-6 w-6" /> sonurajputsr5550@gmail.com
+              </a>
+            </Button>
           </div>
         </div>
         <AlertDialogFooter>

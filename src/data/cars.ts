@@ -266,8 +266,8 @@ export const cars: Car[] = [
     name: "Maruti Grand Vitara",
     brand: "Maruti",
     type: "SUV",
-    price: 3999,
-    image: "/grandvitara.jpg", // Placeholder image
+    price: 3499,
+    image: "/grandvitara.jpg",
     images: ["/grandvitara.jpg"],
     rating: 4.7,
     reviews: 95,
@@ -295,20 +295,20 @@ export const cars: Car[] = [
   },
   {
     id: 9,
-    name: "Maruti Fronx (Coming Soon)",
+    name: "Maruti Fronx Blue",
     brand: "Maruti",
     type: "SUV",
-    price: 2599,
-    image: "/fronx.jpg", // Placeholder image
+    price: 2799,
+    image: "/fronx.jpg",
     images: ["/fronx.jpg"],
     rating: 4.6,
     reviews: 88,
     transmission: "Manual",
     fuel: "CNG",
-    seats: 5, // ✅ FIXED: added missing seats property
-    available: false,
+    seats: 5,
+    available: true,
     description:
-      "A stylish crossover with a sporty design and efficient performance. Available in both Petrol and CNG.",
+      "A stylish crossover with a sporty design and efficient performance in a stunning blue finish.",
     features: [
       "Dual-tone interior",
       "Floating Infotainment System",
@@ -355,38 +355,6 @@ export const cars: Car[] = [
       mileage: "21.4 km/l",
       engine: "1.2L VVT",
       year: 2016,
-    },
-    location: "Ghaziabad, UP",
-  },
-  {
-    id: 11,
-    name: "Tata Punch (Petrol)", // Differentiated name
-    brand: "Tata",
-    type: "SUV",
-    price: 2599,
-    image: "/tatapunch.jpg",
-    images: ["/tatapunch.jpg"],
-    rating: 4.7,
-    reviews: 125,
-    transmission: "Manual",
-    fuel: "Petrol", // ✅ Set to Petrol
-    seats: 5,
-    available: true,
-    description:
-      "The Tata Punch is a compact SUV with a bold design, high ground clearance, and a 5-star safety rating.",
-    features: [
-      "90-Degree Opening Doors",
-      "7-inch Touchscreen Infotainment",
-      "ABS with EBD",
-      "Dual Airbags",
-    ],
-    specifications: {
-      transmission: "Manual",
-      fuel: "CNG", //
-      seats: 5,
-      mileage: "20.09 km/l", // Mileage for Petrol
-      engine: "1.2L Revotron",
-      year: 2025,
     },
     location: "Ghaziabad, UP",
   },

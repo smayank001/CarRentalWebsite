@@ -14,7 +14,7 @@ const LocalSeoContent = () => {
           <CardContent className="grid md:grid-cols-2 gap-8 text-muted-foreground leading-relaxed">
             <div>
               <p className="mb-4">
-                Welcome to AToZ Car Rentals, the leading choice for <strong className="text-foreground">self-drive car rental in Ghaziabad</strong>. Whether you need a comfortable sedan for a family trip, a rugged SUV for an adventure, or a stylish car for a special occasion, we have the perfect vehicle for you. Our commitment is to provide an affordable, reliable, and convenient car hire experience.
+                Welcome to SR Car Rental, the leading choice for <strong className="text-foreground">self-drive car rental in Ghaziabad</strong>. Whether you need a comfortable sedan for a family trip, a rugged SUV for an adventure, or a stylish car for a special occasion, we have the perfect vehicle for you. Our commitment is to provide an affordable, reliable, and convenient car hire experience.
               </p>
               <p>
                 We proudly serve the entire Ghaziabad region, with easy pickup and drop-off services available for customers in <strong className="text-foreground">Indirapuram, Vaishali, Raj Nagar Extension, and Noida Extension</strong>. Our fleet is meticulously maintained to ensure your safety and comfort on every journey. With transparent pricing and no hidden fees, we are the most trusted <strong className="text-foreground">car on rent service in Ghaziabad</strong>.

@@ -61,8 +61,7 @@ const bookingSchema = z.object({
 
 type BookingFormValues = z.infer<typeof bookingSchema>;
 
-// const WHATSAPP_NUMBER_1 = "919953799936";
-const WHATSAPP_NUMBER_2 = "919910198557";
+const WHATSAPP_NUMBER = "918595499936";
 
 const Booking = () => {
   const [isDialogVisible, setDialogVisible] = useState(false);
@@ -297,17 +296,11 @@ const Booking = () => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="space-y-4 py-4">
-            {/* <Button
-              onClick={() => handleContact(WHATSAPP_NUMBER_1)}
-              className="w-full h-16 text-lg bg-green-500 text-white hover:bg-green-599 hover:text-white"
-            >
-              <MessageSquare className="mr-2 h-6 w-6" /> Contact Sonu
-            </Button> */}
             <Button
-              onClick={() => handleContact(WHATSAPP_NUMBER_2)}
-              className="w-full h-16 text-lg bg-green-500 text-white hover:bg-green-599 hover:text-white"
+              onClick={() => handleContact(WHATSAPP_NUMBER)}
+              className="w-full h-16 text-lg bg-green-500 text-white hover:bg-green-600 hover:text-white"
             >
-              <MessageSquare className="mr-2 h-6 w-6" /> Contact Aniket Motors
+              <MessageSquare className="mr-2 h-6 w-6" /> Contact SR Car Rental
             </Button>
           </div>
           <AlertDialogFooter>

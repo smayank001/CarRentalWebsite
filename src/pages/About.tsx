@@ -16,7 +16,7 @@ const About = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-bold font-montserrat mb-4">
-            About <span className="text-primary">AToZ Car Rentals</span>
+            About <span className="text-primary">SR Car Rental</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Your trusted partner on the road, providing the best rental experience in Ghaziabad.
@@ -35,7 +35,7 @@ const About = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6">Our Story</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Founded by a team of passionate automobile enthusiasts, AToZ Car Rentals was born from a simple idea: to make premium vehicle rentals accessible, affordable, and hassle-free for everyone in Ghaziabad. We saw a need for a reliable service that didn't just provide cars, but delivered peace of mind.
+                Founded by a team of passionate automobile enthusiasts, SR Car Rental was born from a simple idea: to make premium vehicle rentals accessible, affordable, and hassle-free for everyone in Ghaziabad. We saw a need for a reliable service that didn't just provide cars, but delivered peace of mind.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 From our humble beginnings with just a few vehicles, we have grown into Ghaziabad's most trusted rental provider. Our success is driven by our unwavering commitment to quality and our deep understanding of what our customers need—whether it's a rugged SUV for an adventurous weekend, a comfortable sedan for a family trip, or a zippy bike for city cruising.
@@ -79,7 +79,7 @@ const About = () => {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-montserrat">The AToZ Advantage</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-montserrat">The SR Advantage</h2>
             <p className="text-lg text-muted-foreground mt-2">What makes us the best in Ghaziabad.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -31,25 +31,22 @@ const Header = () => {
 
   return (
     <>
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled || isMobileMenuOpen
-            ? 'bg-background shadow-md' 
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen
+            ? 'bg-background shadow-md'
             : 'bg-transparent'
-        }`}
+          }`}
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="flex items-center space-x-2 group"
             >
-              <div className="p-2 rounded-lg bg-primary text-primary-foreground">
-                <Car className="h-6 w-6" />
-              </div>
-              <span className="text-xl font-bold font-montserrat text-primary">
-                AToZ Car Rentals
+              <img src="/logo.jpg" alt="SR Car Rental Logo" className="h-10 w-10 object-cover rounded-full border border-yellow-500/20 bg-black group-hover:scale-105 transition-transform duration-300 shadow-md" />
+              <span className="text-xl font-bold font-montserrat text-primary tracking-wide">
+
               </span>
             </Link>
 
@@ -59,11 +56,10 @@ const Header = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`font-medium transition-colors duration-300 hover:text-primary ${
-                    location.pathname === item.path 
-                      ? 'text-primary' 
+                  className={`font-medium transition-colors duration-300 hover:text-primary ${location.pathname === item.path
+                      ? 'text-primary'
                       : 'text-foreground'
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </Link>
@@ -99,11 +95,10 @@ const Header = () => {
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`font-medium transition-colors duration-300 hover:text-primary ${
-                      location.pathname === item.path 
-                        ? 'text-primary' 
+                    className={`font-medium transition-colors duration-300 hover:text-primary ${location.pathname === item.path
+                        ? 'text-primary'
                         : 'text-foreground'
-                    }`}
+                      }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}

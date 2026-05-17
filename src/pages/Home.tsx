@@ -76,6 +76,67 @@ const Home = () => {
       {/* Local SEO Content Section */}
       <LocalSeoContent />
 
+      {/* SR Car Rental Gallery & Offers Slider */}
+      <section className="py-20 bg-black text-white relative overflow-hidden">
+        {/* Decorative golden luxury glows */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold font-montserrat tracking-wide">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-200 to-yellow-500 font-extrabold">Exclusive Services</span> & Pricing
+            </h2>
+            <p className="text-sm md:text-base text-gray-400 mt-3 max-w-2xl mx-auto">
+              Scan through our premium drive rules, transparent price lists, and experience flyers to start your perfect journey.
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <Carousel
+              opts={{ align: "start", loop: true }}
+              className="w-full relative"
+            >
+              <CarouselContent className="-ml-3">
+                {[
+                  { src: "/logo.jpg", alt: "SR Car Rental Premium Logo Banner" },
+                  { src: "/pricelist.jpg", alt: "SR Car Rental Transparent Price List" },
+                  { src: "/srcar.jpeg", alt: "SR Car Rental Self Drive Experience Guidelines" },
+                  { src: "/srcarrental.jpeg", alt: "SR Car Rental Self Drive Premium Packages" },
+                ].map((item, idx) => (
+                  <CarouselItem key={idx} className="pl-3 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <div className="relative group overflow-hidden rounded-2xl border border-yellow-500/10 bg-zinc-950 p-2 shadow-2xl transition-all duration-500 hover:border-yellow-500/30">
+                      {/* Image container */}
+                      <div className="relative aspect-[9/16] overflow-hidden rounded-xl bg-black flex items-center justify-center">
+                        <img
+                          src={item.src}
+                          alt={item.alt}
+                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        />
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      </div>
+                      <div className="mt-3 text-center">
+                        <h4 className="text-xs font-semibold tracking-wide text-gray-300 font-montserrat truncate px-1">
+                          {item.alt}
+                        </h4>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              
+              {/* Carousel Navigation Buttons */}
+              <div className="flex justify-center items-center gap-6 mt-8">
+                <CarouselPrevious className="static translate-y-0 bg-zinc-900 border border-yellow-500/20 text-yellow-400 hover:bg-yellow-500 hover:text-black rounded-full shadow-lg h-10 w-10 transition-all duration-300" />
+                <span className="text-xs text-yellow-500/60 font-mono tracking-widest uppercase">SR EXPERIENCE</span>
+                <CarouselNext className="static translate-y-0 bg-zinc-900 border border-yellow-500/20 text-yellow-400 hover:bg-yellow-500 hover:text-black rounded-full shadow-lg h-10 w-10 transition-all duration-300" />
+              </div>
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20 bg-secondary">
         <div className="container mx-auto px-6">
@@ -137,7 +198,7 @@ const Home = () => {
       <section id="why-us" className="py-20 bg-secondary">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-montserrat">Why Choose AToZ Car Rentals?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-montserrat">Why Choose SR Car Rental?</h2>
             <p className="text-lg text-muted-foreground mt-2">Your satisfaction is our priority.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
